@@ -1,0 +1,7 @@
+{
+    "common": {
+        "welcome": "Bienvenido a tu proyecto",
+        "startBuilding": "Comienza a construir tu aplicación aquí.",
+        "toggleTheme": "Cambiar tema"
+    }
+}
