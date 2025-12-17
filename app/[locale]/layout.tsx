@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 import { locales } from "@/i18n/config";
 import "../globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 
 const parkinsans = Parkinsans({ subsets: ["latin"], variable: "--font-sans" });
 
