@@ -1,7 +1,6 @@
-"use client";
-
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { UserAvatar } from "../layout/avatar";
 
 export function Header() {
   return (
@@ -10,6 +9,7 @@ export function Header() {
         <div className="flex items-center gap-2 ml-auto">
           <LanguageSwitcher />
           <ThemeToggle />
+          <UserAvatar></UserAvatar>
         </div>
       </div>
     </header>
