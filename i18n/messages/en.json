@@ -3,6 +3,11 @@
         "welcome": "Welcome to Your Project",
         "startBuilding": "Start building your application here.",
         "toggleTheme": "Toggle theme",
-        "noItemsFound": "No items found."
+        "noItemsFound": "No items found.",
+        "dashboard": "Dashboard",
+        "matches": "Matches",
+        "search": "Search",
+        "privacy": "Privacy",
+        "messages": "Messages"
     }
 }
