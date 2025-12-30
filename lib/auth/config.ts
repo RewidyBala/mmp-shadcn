@@ -7,12 +7,6 @@ declare module "next-auth" {
   }
 }
 
-declare module "next-auth/jwt" {
-  interface JWT {
-    accessToken?: string;
-  }
-}
-
 export const authConfig = {
   providers: [
     Credentials({
@@ -64,6 +58,7 @@ export const authConfig = {
       return token;
     },
     async session({ session, token }: any) {
+      console.log(session, token);
       if (token && session.user) {
         session.user.name = token.name;
         session.accessToken = token.accessToken;

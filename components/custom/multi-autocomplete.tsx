@@ -4,16 +4,10 @@ import {
   ComboboxChip,
   ComboboxChips,
   ComboboxChipsInput,
-  ComboboxCollection,
   ComboboxContent,
   ComboboxEmpty,
-  ComboboxGroup,
-  ComboboxInput,
   ComboboxItem,
-  ComboboxLabel,
   ComboboxList,
-  ComboboxSeparator,
-  ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
 } from "@/components/ui/combobox";
@@ -41,8 +35,7 @@ export function MultiAutocomplete({
       autoHighlight
       items={options}
       disabled={disabled}
-      //   value={selectedOptions}
-      //   defaultValue={defaultValues}
+      defaultValue={defaultValues}
       onValueChange={(values) => {
         onChange(values.map((v: any) => v.value));
       }}

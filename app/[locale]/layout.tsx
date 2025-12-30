@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Parkinsans } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 import { locales } from "@/i18n/config";
 import "../globals.css";
-import { ThemeProvider } from "@/components/layout/theme-provider";
+import { SWRProvider } from "@/providers/swr-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
+import IntlFallbackProvider from "@/providers/intl-fallback-provider";
+import UserProfileProvider from "@/providers/user-profile-provider";
 
 const parkinsans = Parkinsans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -43,18 +45,20 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased">
-        <SessionProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <NextIntlClientProvider messages={messages}>
-              {children}
-            </NextIntlClientProvider>
-          </ThemeProvider>
-        </SessionProvider>
+        <SWRProvider>
+          <SessionProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <IntlFallbackProvider locale={locale} messages={messages}>
+                <UserProfileProvider>{children}</UserProfileProvider>
+              </IntlFallbackProvider>
+            </ThemeProvider>
+          </SessionProvider>
+        </SWRProvider>
       </body>
     </html>
   );

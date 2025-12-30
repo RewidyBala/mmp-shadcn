@@ -10,6 +10,7 @@ import {
   IconUsers,
   IconHeart,
   IconMessageCircle,
+  IconUserHeart,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -20,6 +21,7 @@ const navItems = [
   { href: "/matches", label: "matches", icon: IconHeart },
   { href: "/search", label: "search", icon: IconUsers },
   { href: "/messages", label: "messages", icon: IconMessageCircle },
+  { href: "/my-profile", label: "myProfile", icon: IconUserHeart },
 ];
 
 export function Header() {

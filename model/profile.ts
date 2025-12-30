@@ -1,1 +1,3 @@
-export type Profile = {};
+export type Profile = {
+  id: string;
+};
