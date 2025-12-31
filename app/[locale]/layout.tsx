@@ -9,6 +9,7 @@ import { SWRProvider } from "@/providers/swr-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import IntlFallbackProvider from "@/providers/intl-fallback-provider";
 import UserProfileProvider from "@/providers/user-profile-provider";
+import { auth } from "@/lib/auth";
 
 const parkinsans = Parkinsans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
 
   // Providing all messages to the client
   const messages = await getMessages();
+  const session = await auth();
 
   return (
     <html
@@ -46,7 +48,7 @@ export default async function RootLayout({
     >
       <body className="antialiased">
         <SWRProvider>
-          <SessionProvider>
+          <SessionProvider session={session}>
             <ThemeProvider
               attribute="class"
               defaultTheme="system"

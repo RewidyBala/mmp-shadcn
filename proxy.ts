@@ -16,7 +16,6 @@ export default async function middleware(req: NextRequest) {
   // Skip middleware for static files and API routes
   if (
     pathname.startsWith("/_next") ||
-    pathname.startsWith("/api") ||
     pathname.match(/\.(ico|png|jpg|jpeg|svg|css|js)$/)
   ) {
     return NextResponse.next();
@@ -51,5 +50,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
