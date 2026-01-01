@@ -5,10 +5,8 @@ import { notFound } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 import { locales } from "@/i18n/config";
 import "../globals.css";
-import { SWRProvider } from "@/providers/swr-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import IntlFallbackProvider from "@/providers/intl-fallback-provider";
-import UserProfileProvider from "@/providers/user-profile-provider";
 import { auth } from "@/lib/auth";
 
 const parkinsans = Parkinsans({ subsets: ["latin"], variable: "--font-sans" });
@@ -47,20 +45,18 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased">
-        <SWRProvider>
-          <SessionProvider session={session}>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <IntlFallbackProvider locale={locale} messages={messages}>
-                <UserProfileProvider>{children}</UserProfileProvider>
-              </IntlFallbackProvider>
-            </ThemeProvider>
-          </SessionProvider>
-        </SWRProvider>
+        <SessionProvider session={session}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <IntlFallbackProvider locale={locale} messages={messages}>
+              {children}
+            </IntlFallbackProvider>
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

@@ -97,7 +97,7 @@ export function NameCard() {
                 Age & Height
               </Typography>
               <Typography variant={"small"}>24 years</Typography>
-              <Typography variant={"small"}>5'8"</Typography>
+              <Typography variant={"small"}>5&apos;8&quot;</Typography>
             </div>
 
             <div className="space-y-1">

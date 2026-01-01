@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react";
 
 export function UserAvatar() {
   const handleSignOut = async () => {
-    await signOut({ callbackUrl: "/login" });
+    await signOut({ callbackUrl: "/" });
   };
 
   return (

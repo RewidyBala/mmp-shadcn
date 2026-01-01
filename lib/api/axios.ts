@@ -9,23 +9,6 @@ export const axiosInstance = axios.create({
   },
 });
 
-// Request interceptor
-axiosInstance.interceptors.request.use(
-  (config) => {
-    // Add auth token if available - only use localStorage on client side
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
-      if (token) {
-        config.headers["auth-token"] = `${token}`;
-      }
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
 // Response interceptor
 axiosInstance.interceptors.response.use(
   (response) => response,
