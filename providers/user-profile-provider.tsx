@@ -1,7 +1,7 @@
 "use client";
 import { createContext, ReactNode } from "react";
-import { Profile } from "@/model/profile";
-import { useMyProfile } from "@/hooks/use-my-profile";
+import { Profile } from "@/@types/profile";
+import { useMyProfile } from "@/hooks/api/use-my-profile";
 import { ProductLoading } from "@/components/common/skeleton";
 
 type _UserProfileContext = {

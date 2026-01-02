@@ -11,7 +11,7 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/components/ui/combobox";
-import { SelectProps } from "@/model/common";
+import { SelectProps } from "@/@types/common";
 import { useTranslations } from "next-intl";
 
 export function MultiAutocomplete({

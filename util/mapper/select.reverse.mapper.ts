@@ -1,4 +1,4 @@
-import { SelectOption } from "@/model/common";
+import { SelectOption } from "@/@types/common";
 
 /**
  * Map combobox value to API payload

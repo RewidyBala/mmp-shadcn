@@ -1,9 +1,13 @@
+export type SelectOptions = SelectOption[];
+
 export interface SelectOption<T = string | number> {
   /** Value submitted to form / backend */
   value: T;
 
   /** Label shown to user */
   label: string;
+
+  name?: string;
 
   /** Disable option */
   disabled?: boolean;

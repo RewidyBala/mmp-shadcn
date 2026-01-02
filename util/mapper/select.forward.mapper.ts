@@ -1,4 +1,4 @@
-import { SelectOption } from "@/model/common";
+import { SelectOption } from "@/@types/common";
 
 function mapToSelectOption<
   TItem,

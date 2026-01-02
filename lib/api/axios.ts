@@ -11,7 +11,16 @@ export const axiosInstance = axios.create({
 
 // Response interceptor
 axiosInstance.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (response.data?.message === "Success") {
+      response.data = response.data.response;
+      return response;
+    } else {
+      return Promise.reject(
+        new Error(response.data?.message || "Unexpected response from server")
+      );
+    }
+  },
   (error: AxiosError) => {
     // Handle common errors
     if (error.response) {
