@@ -1,5 +1,7 @@
 // Options arrays for dropdowns and selects
 
+import { SelectOptions } from "@/@types/common";
+
 // export const HEIGHT_OPTIONS = Array.from({ length: 41 }, (_, i) => {
 //   const heightCm = 140 + i * 2;
 //   const feet = Math.floor(heightCm / 30.48);
@@ -75,9 +77,17 @@ export const HEIGHT_OPTIONS = [
 ] as const;
 
 export const GENDER_OPTIONS = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "other", label: "Other" },
+  { value: "MALE", label: "Male" },
+  { value: "FEMALE", label: "Female" },
+] as const;
+
+export const CREATED_BY_OPTIONS: SelectOptions = [
+  { value: "MYSELF", label: "profile.myself" },
+  { value: "PARENT", label: "profile.parent" },
+  { value: "GUARDIAN", label: "profile.guardian" },
+  { value: "SIBLING", label: "profile.sibling" },
+  { value: "FRIEND", label: "profile.friend" },
+  { value: "RELATIVE", label: "profile.relative" },
 ] as const;
 
 export const MARITAL_STATUS_OPTIONS = [
@@ -171,3 +181,10 @@ export const DIET_OPTIONS = [
   { value: "eggetarian", label: "Eggetarian" },
   { value: "vegan", label: "Vegan" },
 ] as const;
+
+export const PROFILE_TABS = [
+  { id: "basic", label: "profile.basic" },
+  { id: "education", label: "profile.education" },
+  { id: "religion", label: "profile.religion" },
+  { id: "career", label: "profile.career" },
+];

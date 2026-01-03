@@ -104,49 +104,34 @@ export function NameCard() {
         <CardContent className="flex flex-col justify-between flex-1 space-y-6">
           {/* Profile Details */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="space-y-1">
-              <Typography variant="muted" className="mb-2">
-                {t("profile.age")} & {t("profile.height")}
-              </Typography>
-              <Typography variant={"small"}>
-                {basic.age} {t("profile.years")}
-              </Typography>
-              <Typography variant={"small"}>
-                {t("profile.heightOptions", height)}
-              </Typography>
-            </div>
+            <InfoBlock
+              title={`${t("profile.age")} & ${t("profile.height")}`}
+              items={[
+                `${basic.age} ${t("profile.years")}`,
+                t("profile.heightOptions", height),
+              ]}
+            />
 
-            <div className="space-y-1">
-              <Typography variant="muted" className="mb-2">
-                {t("profile.caste")} & {t("profile.community")}
-              </Typography>
-              <Typography variant={"small"}>
-                {t(`religion.${nameCard.religion}`)}
-              </Typography>
-              <Typography variant={"small"}>
-                {t(`caste.${nameCard.religion}.${nameCard.caste}`)}
-              </Typography>
-            </div>
+            <InfoBlock
+              title={`${t("profile.caste")} & ${t("profile.community")}`}
+              items={[
+                t(`religion.${nameCard.religion}`),
+                t(`caste.${nameCard.religion}.${nameCard.caste}`),
+              ]}
+            />
 
-            <div className="space-y-1">
-              <Typography variant="muted" className="mb-2">
-                {t("profile.education")} & {t("profile.occupation")}
-              </Typography>
-              <Typography variant={"small"}>{educationText}</Typography>
-              <Typography variant={"small"}>
-                {t(`occupation.${education.occupation}`)}
-              </Typography>
-            </div>
+            <InfoBlock
+              title={`${t("profile.education")} & ${t("profile.occupation")}`}
+              items={[educationText, t(`occupation.${education.occupation}`)]}
+            />
 
-            <div className="space-y-1">
-              <Typography variant="muted" className="mb-2">
-                {t("profile.location")}
-              </Typography>
-              <Typography variant={"small"}>{location.city?.name}</Typography>
-              <Typography variant={"small"}>
-                {location.state?.name}, {location.country?.name}
-              </Typography>
-            </div>
+            <InfoBlock
+              title={t("profile.location")}
+              items={[
+                location.city?.name,
+                `${location.state?.name}, ${location.country?.name}`,
+              ]}
+            />
           </div>
 
           {/* Stats */}
@@ -212,7 +197,9 @@ export function NameCard() {
                   <IconSquareRoundedPercentage />
                 </div>
                 <div>
-                  <Typography variant="small">Profile completion %</Typography>
+                  <Typography variant="small">
+                    {t("profile.profileCompletion")}
+                  </Typography>
                 </div>
                 <div className="ml-auto">
                   <CircularProgress size={70} value={80}></CircularProgress>
@@ -268,5 +255,20 @@ function StatCard({
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function InfoBlock({ title, items }: { title: string; items: any[] }) {
+  return (
+    <div className="space-y-1">
+      <Typography variant="muted" className="mb-2">
+        {title}
+      </Typography>
+      {items.map((item, index) => (
+        <Typography key={index} variant="small">
+          {item}
+        </Typography>
+      ))}
+    </div>
   );
 }

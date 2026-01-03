@@ -3,6 +3,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface TabItem {
   id: string;
@@ -33,6 +34,7 @@ export function ScrollableTabs({
   containerClassName,
   stickyOffset = 53,
 }: ScrollableTabsProps) {
+  const t = useTranslations();
   const [activeTab, setActiveTab] = React.useState(tabs[0]?.id);
   const isManualScroll = React.useRef(false);
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -121,7 +123,7 @@ export function ScrollableTabs({
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <span className="relative z-10">{tab.label}</span>
+              <span className="relative z-10">{t(tab.label)}</span>
             </button>
           ))}
         </div>
